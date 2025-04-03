@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Women's Safety</title>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="mySidebar">
+      <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()"
+        >✕</a
+      >
+      <a href="../07_user_profile/user_Profile.html">User Profile</a>
+      <a href="../08_women_safety/women_safety.html">Women Safety</a>
+      <a href="../09_social_status/social_status.html">Social Status</a>
+      <a href="../02_login/login.html" id="logout-btn">Logout</a>
+    </div>
+
+    <!-- Button to open sidebar -->
+    <div class="open-btn" onclick="toggleSidebar()">☰</div>
+    <header>
+      <h1>Women's Safety</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Safety Tips</h2>
+        <ul id="safety-tips"></ul>
+      </section>
+      <h2>Helplines:</h2>
+    </main>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img src="../10_img/phone_img.webp" alt="Emergency Number" style="width:100%">
+          <div class="container">
+            <h2>Emergency Number</h2>
+            <p class="title">112</p>
+            <p>Key essential Helpline that is must in emergency.</p>
+            <p><button class="button" id="click-btn-1">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="../10_img/trapped_women.webp" alt="Women Helpline" style="width:100%">
+          <div class="container">
+            <h2>Women Helpline</h2>
+            <p class="title">1091</p>
+            <p>A 24 hours assistance and Emergency response to Women</p>
+            <p><button class="button" id="click-btn-2">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="../10_img/voilence_women.webp" alt="Domestic Abuse Helpline" style="width:100%">
+          <div class="container">
+            <h2>Domestic Abuse Helpline</h2>
+            <p class="title">181</p>
+            <p>An Emergency response to women Affected by voilence</p>
+            <p><button class="button" id="click-btn-3">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
