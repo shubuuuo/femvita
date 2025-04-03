@@ -1,0 +1,66 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../10_img/pink_flower.avif);
+}
+
+.login-container {
+    background-color: #67ec0e94;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    /* background-image: url(../11_img/flower.webp); */
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 7vh;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-field, .submit-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.gender-options label {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    background-color: #df9ca1fd;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #4cae4c;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
