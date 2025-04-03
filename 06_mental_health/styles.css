@@ -1,0 +1,116 @@
+:root {
+    --main-white: #f0f0f0;
+    --main-orange: #fc6602;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    --main-black: #000;
+    --main-pink: #ec14f3;
+    --main-yellow: #f8fc0c;
+}
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh;
+    background-color: #f4f4f9;
+    background-image: url(../10_img/pink_style.avif);
+    background-size: cover;
+}
+
+/* Container */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 60vw;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: var(--main-orange);
+    margin-bottom: 20px;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--main-orange);
+    outline: none;
+}
+
+/* Button */
+.generate-btn, #nextBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--main-orange);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+#nextBtn {
+    background-color: var(--main-orange);
+    color: white;
+    cursor: pointer;
+}
+
+#nextBtn:disabled {
+    background-color: #ccc;
+}
+
+#nextBtn:hover:not(:disabled) {
+    background-color: var(--main-blue);
+}
+
+.generate-btn:hover {
+    background-color: var(--main-blue);
+}
+
+/* Chart */
+#mentalHealthChart {
+    margin-top: 20px;
+}
+
+/* Suggestions */
+.suggestions {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+}
