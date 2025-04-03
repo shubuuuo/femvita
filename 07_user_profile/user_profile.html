@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="mySidebar">
+      <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()"
+        >✕</a
+      >
+      <a href="../07_user_profile/user_Profile.html">User Profile</a>
+      <a href="../08_women_safety/women_safety.html">Women Safety</a>
+      <a href="../09_social_status/social_status.html">Social Status</a>
+      <a href="../02_login/login.html" id="logout-btn">Logout</a>
+    </div>
+
+    <!-- Button to open sidebar -->
+    <div class="open-btn" onclick="toggleSidebar()">☰</div>
+
+    <!-- User Profile Section -->
+    <div class="profile-container">
+      <div class="profile-header">
+        <h1>User Profile</h1>
+      </div>
+      <div class="profile-info">
+        <div class="info-item">
+          <span>Name:</span>
+          <span id="userName"></span>
+        </div>
+        <div class="info-item">
+          <span>Age:</span>
+          <span id="userAge"></span>
+        </div>
+        <div class="info-item">
+          <span>Gender:</span>
+          <span id="userGender"></span>
+        </div>
+        <div class="info-item">
+          <span>BMI:</span>
+          <span id="userBMI"></span>
+        </div>
+        <div class="info-item">
+          <span>Goal:</span>
+          <span id="userGoal"></span>
+        </div>
+        <div class="info-item">
+          <span>Diet Plan:</span>
+          <span id="userDiet"></span>
+        </div>
+        <div class="info-item">
+          <span>Mental Health Status:</span>
+          <span id="mentalData"></span>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
