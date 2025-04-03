@@ -1,0 +1,110 @@
+:root {
+    --main-white: #f0f0f0;
+    --main-orange: #fc6602;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    --main-black: #000;
+    --main-pink: #ec14f3;
+    --main-yellow: #f8fc0c;
+  }
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f4f4f9; */
+    background-image: url(../10_img/style_again_pink.avif);
+    background-size: cover;
+}
+
+/* Container */
+.container {
+    background-color: var(--main-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--main-black);
+    width: 90%;
+    max-width: 60vw;
+    max-height: 80vh;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: var(--main-orange);
+    margin-bottom: 20px;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--main-pink);
+    outline: none;
+}
+
+/* Button */
+.calculate-btn, #nextBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--main-orange);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+#nextBtn {
+    background-color: var(--main-orange);
+    color: white;
+    cursor: pointer;
+}
+
+#nextBtn:disabled {
+    background-color: #ccc;
+}
+
+#nextBtn:hover:not(:disabled) {
+    background-color: var(--main-blue);
+}
+
+.calculate-btn:hover {
+    background-color: var(--main-blue);
+}
+
+/* Result */
+.result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
