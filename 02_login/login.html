@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="login.js" defer></script>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2 class="login-title">Login</h2>
+        <form action="save_data.php" method="POST" class="login-form">
+
+            <!-- Name Input -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="input-field" name="name" required />
+            </div>
+
+            <!-- Gender Input -->
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="gender-options">
+                    <label for="female">
+                        <input type="radio" id="female" name="gender" value="female" required /> Female
+                    </label>
+                    <label for="other">
+                        <input type="radio" id="other" name="gender" value="other" required /> Other
+                    </label>
+                </div>
+            </div>
+
+            <!-- Age Input -->
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" class="input-field" name="age" min="1" max="120" required />
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Login</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
