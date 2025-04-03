@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Mental Health Chart</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized Mental Health Chart</h1>
+
+        <!-- Stress Level -->
+        <div class="input-group">
+            <label for="stress">Stress Level (1 to 10):</label>
+            <input type="number" id="stress" min="1" max="10" placeholder="Enter stress level" />
+        </div>
+
+        <!-- Sleep Hours -->
+        <div class="input-group">
+            <label for="sleep">Sleep Hours (0 to 12):</label>
+            <input type="number" id="sleep" min="0" max="12" placeholder="Enter sleep hours" />
+        </div>
+
+        <!-- Mood Level -->
+        <div class="input-group">
+            <label for="mood">Mood (1 = Very Bad, 10 = Excellent):</label>
+            <input type="number" id="mood" min="1" max="10" placeholder="Enter mood level" />
+        </div>
+
+        <!-- Anxiety Level -->
+        <div class="input-group">
+            <label for="anxiety">Anxiety Level (1 to 10):</label>
+            <input type="number" id="anxiety" min="1" max="10" placeholder="Enter anxiety level" />
+        </div>
+
+        <!-- Generate Button -->
+        <button class="generate-btn" onclick="generateChart()">Generate Chart</button>
+
+        <!-- Chart Section -->
+        <canvas id="mentalHealthChart"></canvas>
+
+        <!-- Suggestions Section -->
+        <div class="suggestions" id="suggestions"></div>
+
+        <!-- Next Button -->
+        <button id="nextBtn" onclick="getUserProfile()" disabled>Next</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
