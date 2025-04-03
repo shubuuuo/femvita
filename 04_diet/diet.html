@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Diet Plan</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized Diet Plan</h1>
+
+        <!-- Text Input -->
+        <div class="input-group" id="text"></div>
+
+        <!-- Goal Selection Dropdown -->
+        <label for="goal">Select Your Goal:</label>
+        <select id="goal">
+            <option value="">-- Select Goal --</option>
+            <option value="weightLoss">Weight Loss</option>
+            <option value="muscleGain">Muscle Gain</option>
+            <option value="maintenance">Maintenance</option>
+        </select>
+
+        <!-- Generate Button -->
+        <button id="generate-btn" onclick="generateDietPlan()">Get Diet Plan</button>
+
+        <!-- Result Section -->
+        <div class="result" id="diet-plan"></div>
+
+        <!-- Next Button -->
+        <button id="nextBtn" onclick="getWorkoutPlan()" disabled>Next</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
