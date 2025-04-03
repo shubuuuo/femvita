@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Workout Plan</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized Workout Plan</h1>
+        <h3>Fill the below inputs to determine the workout type.</h3>
+
+        <!-- Age Input -->
+        <div class="input-group">
+            <label for="age">Enter your Age:</label>
+            <input type="number" id="age" placeholder="Enter your age" />
+        </div>
+
+        <!-- BMI Input -->
+        <div class="input-group">
+            <label for="bmi">Enter your BMI:</label>
+            <input type="number" id="bmi" placeholder="Enter your BMI" />
+        </div>
+
+        <!-- Diet Type -->
+        <div class="input-group">
+            <label for="diet">Select your Diet Type:</label>
+            <select id="diet">
+                <option value="" disabled selected>Select a diet type</option>
+                <option value="high protein">High Protein</option>
+                <option value="balanced">Balanced</option>
+                <option value="low carb">Low Carb</option>
+            </select>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="generate-btn" onclick="generateWorkoutPlan()">Get Workout Plan</button>
+
+        <!-- Result Section -->
+        <div class="result" id="workout-plan"></div>
+
+        <!-- Next Button -->
+        <button id="nextBtn" onclick="getMentalHealthChart()" disabled>Next</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
