@@ -1,0 +1,117 @@
+:root {
+    --main-white: #f0f0f0;
+    --main-orange: #fc6602;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    --main-black: #000;
+    --main-pink: #f31483;
+    --main-yellow: #f8fc0c;
+  }
+  
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--main-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(../10_img/design_pink.avif);
+    background-size: cover;
+  }
+  
+
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--main-pink);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.4s; 
+    z-index: 1000;
+  }
+  
+  .sidebar a {
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--main-white);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    background-color: var(--main-orange);
+  }
+  
+  .sidebar .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font-size: 24px;
+    color: var(--main-white);
+    cursor: pointer;
+  }
+  
+  .sidebar #logout-btn {
+    margin-top: 55vh;
+  }
+
+  .open-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    background-color: var(--main-pink);
+    color: var(--main-white);
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  
+  .open-btn:hover {
+    background-color: var(--main-orange);
+  }
+  
+
+  .profile-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--main-orange);
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--main-black);
+  }
+  
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .info-item span:first-child {
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,154 @@
+:root {
+    --main-white: #f0f0f0;
+    --main-orange: #fc6602;
+    --main-blue: #45567d;
+    --main-gray: #303841;
+    --main-black: #000;
+    --main-pink: #f31483;
+    --main-yellow: #f8fc0c;
+  }
+  
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--main-pink);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.4s; 
+    z-index: 1000;
+  }
+  
+  .sidebar a {
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--main-white);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    background-color: var(--main-orange);
+  }
+  
+  .sidebar .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font-size: 24px;
+    color: var(--main-white);
+    cursor: pointer;
+  }
+  
+  .sidebar #logout-btn {
+    margin-top: 55vh;
+  }
+
+  .open-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    background-color: var(--main-pink);
+    color: var(--main-white);
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  
+  .open-btn:hover {
+    background-color: var(--main-orange);
+  }
+  
+  header {
+    background-color: #e91e63;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+}
+
+h2 {
+    color: #e91e63;
+}
+
+ul {
+    list-style-type: square;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Three columns side by side */
+.column {
+  float: left;
+  width: 30%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 30vw) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Some left and right padding inside the container */
+.container {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+img {
+  max-width: 30vw;
+  max-height: 30vh;
+}

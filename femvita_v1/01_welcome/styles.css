@@ -1,0 +1,100 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); */
+    background-image: url(../10_img/pink_grass.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Container Styling */
+.container {
+    height: 60vh;
+    width: 50vw;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease;
+}
+
+/* Welcome Text Styling */
+#welcome-text {
+    font-size: 2em;
+    color: #f78f3a;
+    margin-bottom: 10px;
+    animation: slideIn 1s ease;
+}
+
+/* User Info Styling */
+#user-info, #additional-user-info {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+#logout-btn, #next {
+    background-color: #fc25df;
+    color: #fff;
+    padding: 12px 24px;
+    margin: 10px 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover, #next:hover {
+    background-color: #f78f3a;
+}
+
+/* Animation for Sliding */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for Fading */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    #welcome-text {
+        font-size: 2em;
+    }
+
+    #user-info {
+        font-size: 1em;
+    }
+}
