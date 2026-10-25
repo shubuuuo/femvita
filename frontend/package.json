@@ -9,9 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "chart.js": "^4.6.1",
+    "chartjs": "^0.3.24",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "19.3.0",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

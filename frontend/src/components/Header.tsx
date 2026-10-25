@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import NotificationBell from "./NotificationBell";
 
 type Menu = "notifications" | "profile" | null;
 
@@ -38,7 +39,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-20 flex h-15 items-center justify-end border-b border-gray-200 bg-white px-6">
       <div ref={containerRef} className="flex items-center gap-2">
-        <div className="relative">
+        {/* <div className="relative">
           <button
             onClick={() => toggle("notifications")}
             aria-label="Notifications"
@@ -81,6 +82,8 @@ export default function Header() {
             </div>
           )}
         </div>
+         */}
+        <NotificationBell />
 
         <Link href="/help" aria-label="Help and support" className={iconButton}>
           <svg
