@@ -154,8 +154,9 @@ export default function CycleTracker() {
   }
 
   const shiftMonth = (delta: number) =>
-    setView(({ year, month }) => {
-      const d = new Date(year, month - 1 + delta, 1);
+    setView((prev) => {
+      if (!prev) return prev; // not loaded yet: nothing to shift
+      const d = new Date(prev.year, prev.month - 1 + delta, 1);
       return { year: d.getFullYear(), month: d.getMonth() + 1 };
     });
 

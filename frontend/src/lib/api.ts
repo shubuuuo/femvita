@@ -1,4 +1,6 @@
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+// const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+// Same origin: Next.js forwards /api/* to the backend (see next.config), so the session cookie just works
+const BASE = "";
 
 export type Flow = "light" | "medium" | "heavy";
 export type Mood = "happy" | "neutral" | "sad";
@@ -55,8 +57,25 @@ export async function api<T>(path: string, options?: RequestInit): Promise<T> {
     ...options,
     headers: { "Content-Type": "application/json", ...options?.headers },
   });
+  // Signed out (or the session expired). Login and register errors are handled by their own forms.
+  if (
+    res.status === 401 &&
+    typeof window !== "undefined" &&
+    !path.startsWith("/api/auth/")
+  ) {
+    await expireSession();
+  }
   if (!res.ok) throw new Error(`API ${res.status}: ${await res.text()}`);
   return res.json();
+}
+
+async function expireSession() {
+  // Clear the stale cookie first. Otherwise the middleware sees it and bounces /login straight back.
+  await fetch("/api/auth/logout", { method: "POST" }).catch(() => {});
+  if (!window.location.pathname.startsWith("/login")) {
+    const here = window.location.pathname + window.location.search;
+    window.location.assign(`/login?next=${encodeURIComponent(here)}`);
+  }
 }
 
 export type ChallengeDay = {
@@ -212,3 +231,36 @@ export type AppNotification = {
   href: string;
 };
 export type NotificationList = { items: AppNotification[] };
+
+export type Account = {
+  id: number;
+  email: string | null;
+  username: string | null;
+  full_name: string | null;
+  birthday: string | null;
+  is_admin: boolean;
+  created_at: string;
+};
+export type MonthSteps = {
+  month_start: string;
+  steps_total: number;
+  days_logged: number;
+  target: number;
+};
+
+// api() throws "API 409: {"detail":"..."}". This pulls out the readable message for forms.
+export function apiErrorMessage(e: unknown, fallback: string): string {
+  if (!(e instanceof Error)) return fallback;
+  const i = e.message.indexOf(": ");
+  if (i < 0) return fallback;
+  try {
+    const detail = JSON.parse(e.message.slice(i + 2)).detail;
+    if (typeof detail === "string") return detail;
+    if (Array.isArray(detail) && detail[0]?.msg)
+      return String(detail[0].msg).replace(/^Value error, /, "");
+  } catch {
+    /* not JSON */
+  }
+  return fallback;
+}
+export type Preferences = { cycle_alerts: boolean; log_reminder: boolean };

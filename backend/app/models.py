@@ -18,17 +18,33 @@ from sqlalchemy.sql import expression
 
 from .database import Base
 
-
 class User(Base):
     __tablename__ = "users"
+    __table_args__ = (UniqueConstraint("email", name="users_email_key"),)
 
     id: Mapped[int] = mapped_column(primary_key=True)
     # Public handle shown on community posts. Nullable so existing rows don't break the migration.
     username: Mapped[str | None] = mapped_column(String(30), unique=True)
+    # Sign-in details. Nullable because the demo user has none until someone registers and claims it.
+    email: Mapped[str | None] = mapped_column(String(254))   # always stored lowercase
+    password_hash: Mapped[str | None] = mapped_column(String(255))
+    full_name: Mapped[str | None] = mapped_column(String(80))
+    birthday: Mapped[date | None] = mapped_column(Date)
     # Moderators. Set by hand in the database (the demo user is made admin in main.py).
     # server_default matters: existing rows need a value when the column is added.
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False, server_default=expression.false())
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class AuthSession(Base):
+    __tablename__ = "sessions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    # Only the SHA-256 of the cookie value is stored, so a leaked database can't be used to sign in
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
 class ChallengeCheckin(Base):
     __tablename__ = "challenge_checkins"
@@ -194,3 +210,11 @@ class DailyMetric(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
+
+class UserSettings(Base):
+    __tablename__ = "user_settings"
+
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    # No row = all defaults, so existing users need no backfill
+    cycle_alerts: Mapped[bool] = mapped_column(Boolean, default=True, server_default=expression.true())
+    log_reminder: Mapped[bool] = mapped_column(Boolean, default=True, server_default=expression.true())

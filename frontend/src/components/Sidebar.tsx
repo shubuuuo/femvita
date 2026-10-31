@@ -8,7 +8,7 @@ const links = [
   { href: "cycle-tracker", label: "Cycle Tracker" },
   { href: "/wellness-hub", label: "Wellness Hub" },
   { href: "/community", label: "Community" },
-  { href: "/telehealth", label: "Telehealth" },
+  // { href: "/telehealth", label: "Telehealth" },
   { href: "/profile", label: "Profile" },
 ];
 

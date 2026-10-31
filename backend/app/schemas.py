@@ -1,7 +1,7 @@
 import datetime as dt
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, StringConstraints, field_validator
 
 Flow = Literal["light", "medium", "heavy"]
 Mood = Literal["happy", "neutral", "sad"]
@@ -314,3 +314,88 @@ class NotificationOut(BaseModel):
 
 class NotificationList(BaseModel):
     items: list[NotificationOut]
+
+# ---- Accounts ----
+MIN_AGE = 16   # placeholder: set this to whatever your region and policy require
+
+Name = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=80)]
+Username = Annotated[str, StringConstraints(min_length=3, max_length=30, pattern=r"^[A-Za-z0-9_.]+$")]
+
+
+def check_birthday(b: dt.date) -> dt.date:
+    today = dt.date.today()
+    age = today.year - b.year - ((today.month, today.day) < (b.month, b.day))
+    if b.year < 1900:
+        raise ValueError("Please enter a valid birthday.")
+    if age < MIN_AGE:
+        raise ValueError(f"You must be at least {MIN_AGE} to use FemVita.")
+    return b
+
+
+class RegisterIn(BaseModel):
+    email: EmailStr
+    # No whitespace stripping on passwords, and no composition rules: length matters most
+    password: str = Field(min_length=10, max_length=128)
+    username: Username
+    full_name: Name
+    birthday: dt.date
+
+    @field_validator("birthday")
+    @classmethod
+    def plausible_age(cls, b: dt.date) -> dt.date:
+        return check_birthday(b)
+
+
+class LoginIn(BaseModel):
+    email: str = Field(min_length=1, max_length=254)
+    password: str = Field(min_length=1, max_length=128)
+
+
+class AccountOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    email: str | None
+    username: str | None
+    full_name: str | None
+    birthday: dt.date | None
+    is_admin: bool
+    created_at: dt.datetime
+
+
+class ProfileIn(BaseModel):
+    """PATCH: send only what changed. Anything left out (or null) stays as it is. Email is not editable yet."""
+    full_name: Name | None = None
+    username: Username | None = None
+    birthday: dt.date | None = None
+
+    @field_validator("birthday")
+    @classmethod
+    def plausible_age(cls, b: dt.date | None) -> dt.date | None:
+        return check_birthday(b) if b is not None else b
+
+
+class PasswordChangeIn(BaseModel):
+    current_password: str = Field(min_length=1, max_length=128)
+    new_password: str = Field(min_length=10, max_length=128)
+
+
+# ---- Metrics: this month ----
+class MonthSteps(BaseModel):
+    month_start: dt.date
+    steps_total: int
+    days_logged: int
+    target: int        # daily goal x days in the month
+
+# ---- Preferences ----
+class PreferencesOut(BaseModel):
+    cycle_alerts: bool
+    log_reminder: bool
+
+
+class PreferencesIn(BaseModel):
+    cycle_alerts: bool | None = None   # PATCH: leave a field out (or null) to keep it as it is
+    log_reminder: bool | None = None
+
+
+class DeleteAccountIn(BaseModel):
+    password: str = Field(min_length=1, max_length=128)

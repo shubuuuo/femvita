@@ -10,6 +10,7 @@ from ..deps import get_current_user_id, get_today
 from ..models import DailyLog
 from ..schemas import NotificationList, NotificationOut
 from .cycle import load_model
+from .preferences import load_preferences
 
 router = APIRouter(prefix="/api/notifications")
 
@@ -28,8 +29,9 @@ def list_notifications(
 ):
     s = logic.summarize(load_model(db, user_id), today)
     items: list[NotificationOut] = []
+    prefs = load_preferences(db, user_id)
 
-    if s["has_data"]:
+    if s["has_data"] and prefs.cycle_alerts:
         day, late, nxt = s["cycle_day"], s["days_late"], s["next_period_in"]
         if late > 0:
             items.append(NotificationOut(kind="period", href="/cycle-tracker",
@@ -51,10 +53,11 @@ def list_notifications(
                 items.append(NotificationOut(kind="ovulation", href="/cycle-tracker",
                                              text="Estimated ovulation is today"))
 
-    logged_today = db.scalar(
-        select(DailyLog.id).where(DailyLog.user_id == user_id, DailyLog.log_date == today)
-    )
-    if logged_today is None:
-        items.append(NotificationOut(kind="log", href="/cycle-tracker", text="You haven't logged anything today"))
+    if prefs.log_reminder:
+        logged_today = db.scalar(
+            select(DailyLog.id).where(DailyLog.user_id == user_id, DailyLog.log_date == today)
+        )
+        if logged_today is None:
+            items.append(NotificationOut(kind="log", href="/cycle-tracker", text="You haven't logged anything today"))
 
     return NotificationList(items=items)
